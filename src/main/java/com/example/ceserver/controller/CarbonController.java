@@ -7,18 +7,17 @@ import com.example.ceserver.resp.AccommodationResp;
 import com.example.ceserver.resp.ActivityResp;
 import com.example.ceserver.resp.TrafficResp;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class CarbonController {
 
-    @GetMapping("/carbon/traffic?distance={distance}&population={population}")
-    public ResponseEntity<TrafficResp> getTraffic(@PathVariable("distance") double distance,
-                                                @PathVariable("population") Integer population) {
+    @RequestMapping("/carbon/traffic")
+    public ResponseEntity<TrafficResp> getTraffic(@RequestParam("distance") double distance,
+                                                @RequestParam("population") Integer population) {
         TrafficParam trafficParam = TrafficParam.builder()
                 .distance(distance)
                 .population(population)
@@ -32,9 +31,9 @@ public class CarbonController {
         return ResponseEntity.ok(trafficResp);
     }
 
-    @GetMapping("/carbon/accommodation?priceLevel={priceLevel}&population={population}")
-    public ResponseEntity<AccommodationResp> getAccommodation(@PathVariable("priceLevel") String priceLevel,
-                                               @PathVariable("population") Integer population) {
+    @RequestMapping("/carbon/accommodation")
+    public ResponseEntity<AccommodationResp> getAccommodation(@RequestParam("priceLevel") String priceLevel,
+                                               @RequestParam("population") Integer population) {
         AccommodationParam accommodation = AccommodationParam.builder()
                 .priceLevel(priceLevel)
                 .population(population)
@@ -48,9 +47,9 @@ public class CarbonController {
         return ResponseEntity.ok(accommodationResp);
     }
 
-    @GetMapping("/carbon/activity?activityLevel={activityLevel}&population={population}")
-    public ResponseEntity<ActivityResp> traffic(@PathVariable("activityLevel") String activityLevel,
-                                                @PathVariable("population") Integer population) {
+    @RequestMapping("/carbon/activity")
+    public ResponseEntity<ActivityResp> traffic(@RequestParam("activityLevel") String activityLevel,
+                                                @RequestParam("population") Integer population) {
         ActivityParam activityParam = ActivityParam.builder()
                 .activityLevel(activityLevel)
                 .population(population)
