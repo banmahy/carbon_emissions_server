@@ -14,7 +14,7 @@ public class CarbonController {
 
     @RequestMapping("/carbon/traffic")
     public ResponseEntity<TrafficResp> getTraffic(@RequestParam("distance") double distance,
-                                                @RequestParam("population") Integer population) {
+        @RequestParam("population") Integer population) {
         TrafficParam trafficParam = TrafficParam.builder()
                 .distance(distance)
                 .population(population)
@@ -30,7 +30,7 @@ public class CarbonController {
 
     @RequestMapping("/carbon/accommodation")
     public ResponseEntity<AccommodationResp> getAccommodation(@RequestParam("priceLevel") String priceLevel,
-                                               @RequestParam("population") Integer population) {
+        @RequestParam("population") Integer population) {
         AccommodationParam accommodation = AccommodationParam.builder()
                 .priceLevel(priceLevel)
                 .population(population)
@@ -46,7 +46,7 @@ public class CarbonController {
 
     @RequestMapping("/carbon/activity")
     public ResponseEntity<ActivityResp> traffic(@RequestParam("activityLevel") String activityLevel,
-                                                @RequestParam("population") Integer population) {
+        @RequestParam("population") Integer population) {
         ActivityParam activityParam = ActivityParam.builder()
                 .activityLevel(activityLevel)
                 .population(population)
