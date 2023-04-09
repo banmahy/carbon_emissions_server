@@ -1,16 +1,13 @@
 package com.example.ceserver.controller;
 
-import com.example.ceserver.param.AccommodationParam;
-import com.example.ceserver.param.ActivityParam;
-import com.example.ceserver.param.TrafficParam;
-import com.example.ceserver.resp.AccommodationResp;
-import com.example.ceserver.resp.ActivityResp;
-import com.example.ceserver.resp.TrafficResp;
+import com.example.ceserver.model.param.AccommodationParam;
+import com.example.ceserver.model.param.ActivityParam;
+import com.example.ceserver.model.param.TrafficParam;
+import com.example.ceserver.model.resp.AccommodationResp;
+import com.example.ceserver.model.resp.ActivityResp;
+import com.example.ceserver.model.resp.TrafficResp;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public class CarbonController {

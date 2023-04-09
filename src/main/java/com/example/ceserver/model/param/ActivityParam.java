@@ -1,4 +1,4 @@
-package com.example.ceserver.param;
+package com.example.ceserver.model.param;
 
 import lombok.Builder;
 import lombok.Data;

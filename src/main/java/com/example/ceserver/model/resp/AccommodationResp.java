@@ -1,13 +1,15 @@
-package com.example.ceserver.param;
+package com.example.ceserver.model.resp;
 
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
-public class AccommodationParam {
+public class AccommodationResp {
 
     private String priceLevel;
 
     private Integer population;
+
+    private double carbonEmission;
 }

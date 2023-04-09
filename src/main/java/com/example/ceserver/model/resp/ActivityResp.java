@@ -1,4 +1,4 @@
-package com.example.ceserver.resp;
+package com.example.ceserver.model.resp;
 
 import lombok.Builder;
 import lombok.Data;
