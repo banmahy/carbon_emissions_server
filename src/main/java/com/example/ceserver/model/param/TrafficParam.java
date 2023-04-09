@@ -10,4 +10,8 @@ public class TrafficParam {
     private double distance;
 
     private Integer population;
+
+    private Integer traffic;
+
+    private String uid;
 }

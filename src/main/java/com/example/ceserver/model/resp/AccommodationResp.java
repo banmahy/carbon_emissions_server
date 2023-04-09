@@ -7,9 +7,11 @@ import lombok.Data;
 @Builder
 public class AccommodationResp {
 
-    private String priceLevel;
+    private Integer priceLevel;
 
     private Integer population;
 
     private double carbonEmission;
+
+    private String uid;
 }

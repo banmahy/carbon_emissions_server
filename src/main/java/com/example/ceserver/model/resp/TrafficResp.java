@@ -11,6 +11,10 @@ public class TrafficResp {
 
     private Integer population;
 
+    private Integer traffic;
+
     private double carbonEmission;
+
+    private String uid;
 
 }

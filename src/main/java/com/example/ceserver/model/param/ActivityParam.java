@@ -7,7 +7,9 @@ import lombok.Data;
 @Builder
 public class ActivityParam {
 
-    private String activityLevel;
+    private Integer activityLevel;
 
     private Integer population;
+
+    private String uid;
 }
