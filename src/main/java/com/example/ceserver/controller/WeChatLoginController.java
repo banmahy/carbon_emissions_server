@@ -1,6 +1,6 @@
 package com.example.ceserver.controller;
 
-import com.example.ceserver.service.WeChatLoginService;
+import com.example.ceserver.service.impl.WeChatLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +19,8 @@ public class WeChatLoginController {
     private WeChatLoginService weChatLoginService;
 
     @RequestMapping("/login")
-    public ResponseEntity<String> weChatLogin(String code) {
-        return ResponseEntity.ok(weChatLoginService.login(code));
+    public ResponseEntity<String> weChatLogin(String code, String userInfo) {
+        return ResponseEntity.ok(weChatLoginService.login(code, userInfo));
     }
 
 }
