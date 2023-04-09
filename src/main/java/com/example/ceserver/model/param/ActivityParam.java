@@ -1,4 +1,4 @@
-package com.example.ceserver.param;
+package com.example.ceserver.model.param;
 
 import lombok.Builder;
 import lombok.Data;
@@ -7,7 +7,9 @@ import lombok.Data;
 @Builder
 public class ActivityParam {
 
-    private String activityLevel;
+    private Integer activityLevel;
 
     private Integer population;
+
+    private String uid;
 }

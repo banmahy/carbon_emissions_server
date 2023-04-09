@@ -1,4 +1,4 @@
-package com.example.ceserver.resp;
+package com.example.ceserver.model.resp;
 
 import lombok.Builder;
 import lombok.Data;
@@ -7,9 +7,11 @@ import lombok.Data;
 @Builder
 public class ActivityResp {
 
-    private String activityLevel;
+    private Integer activityLevel;
 
     private Integer population;
 
     private double carbonEmission;
+
+    private String uid;
 }
