@@ -1,5 +1,6 @@
-package com.example.ceserver.entity;
+package com.example.ceserver.model.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,6 +12,7 @@ import java.io.Serializable;
 */
 @Builder
 @Data
+@TableName("tbl_sys_user")
 public class TblSysUser extends BaseEntity implements Serializable {
 
     /**

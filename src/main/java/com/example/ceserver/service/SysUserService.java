@@ -1,7 +1,7 @@
 package com.example.ceserver.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.ceserver.entity.TblSysUser;
+import com.example.ceserver.model.entity.TblSysUser;
 
 /**
  * @ClassName SysUserService

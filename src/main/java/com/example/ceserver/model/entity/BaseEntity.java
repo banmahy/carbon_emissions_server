@@ -1,8 +1,7 @@
-package com.example.ceserver.entity;
+package com.example.ceserver.model.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

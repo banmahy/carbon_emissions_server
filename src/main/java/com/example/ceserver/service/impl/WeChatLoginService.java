@@ -1,7 +1,7 @@
 package com.example.ceserver.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.ceserver.entity.TblSysUser;
+import com.example.ceserver.model.entity.TblSysUser;
 import com.example.ceserver.service.SysUserService;
 import com.example.ceserver.util.JWTUtils;
 import net.sf.json.JSONObject;
