@@ -21,9 +21,16 @@ public class AccommodationServiceImpl extends ServiceImpl<AccommodationMapper, A
         implements AccommodationService {
 
     @Override
-    public AccommodationEntity find(String uid) {
+    public AccommodationEntity find(String userId) {
         QueryWrapper<AccommodationEntity> wrapper = new QueryWrapper<>();
-        wrapper.eq("uid", uid);
+        wrapper.eq("user_id", userId);
         return baseMapper.selectOne(wrapper);
+    }
+
+    @Override
+    public boolean saveOrUpdateByUserId(AccommodationEntity accommodationEntity) {
+        QueryWrapper<AccommodationEntity> wrapper = new QueryWrapper<>();
+        wrapper.eq("user_id", accommodationEntity.getUserId());
+        return saveOrUpdate(accommodationEntity, wrapper);
     }
 }

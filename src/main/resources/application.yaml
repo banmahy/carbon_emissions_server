@@ -6,8 +6,8 @@ weChat:
 spring:
   datasource:
     username: root
-    password: 123456
-    url: jdbc:mysql://127.0.0.1:3306/carbon-emission-mysql?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    password: 123
+    url: jdbc:mysql://127.0.0.1:3306/carbon?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 #mybatis-plus相关配置

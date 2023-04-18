@@ -13,5 +13,5 @@ public class ActivityResp {
 
     private double carbonEmission;
 
-    private String uid;
+    private String userId;
 }

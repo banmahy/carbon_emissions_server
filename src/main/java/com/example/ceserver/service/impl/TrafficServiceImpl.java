@@ -20,9 +20,16 @@ import org.springframework.stereotype.Service;
 public class TrafficServiceImpl extends ServiceImpl<TrafficMapper, TrafficEntity> implements TrafficService {
 
     @Override
-    public TrafficEntity find(String uid) {
+    public TrafficEntity find(String userId) {
         QueryWrapper<TrafficEntity> wrapper = new QueryWrapper<>();
-        wrapper.eq("uid", uid);
+        wrapper.eq("user_id", userId);
         return baseMapper.selectOne(wrapper);
+    }
+
+    @Override
+    public boolean saveOrUpdateByUserId(TrafficEntity trafficEntity) {
+        QueryWrapper<TrafficEntity> wrapper = new QueryWrapper<>();
+        wrapper.eq("user_id", trafficEntity.getUserId());
+        return saveOrUpdate(trafficEntity, wrapper);
     }
 }

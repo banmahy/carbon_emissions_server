@@ -13,5 +13,5 @@ public class AccommodationResp {
 
     private double carbonEmission;
 
-    private String uid;
+    private String userId;
 }

@@ -5,5 +5,7 @@ import com.example.ceserver.model.entity.TrafficEntity;
 
 public interface TrafficService extends IService<TrafficEntity> {
 
-    TrafficEntity find(String uid);
+    TrafficEntity find(String userId);
+
+    boolean saveOrUpdateByUserId(TrafficEntity trafficEntity);
 }

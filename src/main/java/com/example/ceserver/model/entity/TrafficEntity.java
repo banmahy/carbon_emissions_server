@@ -17,11 +17,6 @@ public class TrafficEntity {
     private String id;
 
     /**
-    * 记录id
-    */
-    private String uid;
-
-    /**
     * 用户id
     */
     private String userId;

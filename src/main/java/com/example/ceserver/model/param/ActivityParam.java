@@ -11,5 +11,5 @@ public class ActivityParam {
 
     private Integer population;
 
-    private String uid;
+    private String userId;
 }
