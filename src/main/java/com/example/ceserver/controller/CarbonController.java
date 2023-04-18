@@ -1,5 +1,6 @@
 package com.example.ceserver.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.ceserver.model.entity.AccommodationEntity;
 import com.example.ceserver.model.entity.ActivityEntity;
 import com.example.ceserver.model.entity.TrafficEntity;
@@ -36,12 +37,12 @@ public class CarbonController {
     public ResponseEntity<TrafficResp> getTraffic(@RequestParam("distance") Double distance,
         @RequestParam("traffic") Integer traffic,
         @RequestParam("population") Integer population,
-        @RequestParam("uid") String uid) {
+        @RequestParam("userId") String userId) {
         TrafficParam trafficParam = TrafficParam.builder()
                 .distance(distance)
                 .traffic(traffic)
                 .population(population)
-                .uid(uid)
+                .userId(userId)
                 .build();
         double carbonEmission = CalculateUtil.getEmission(trafficParam);
         TrafficResp trafficResp = TrafficResp.builder()
@@ -49,16 +50,16 @@ public class CarbonController {
                 .traffic(traffic)
                 .population(population)
                 .carbonEmission(carbonEmission)
-                .uid(uid)
+                .userId(userId)
                 .build();
         TrafficEntity trafficEntity = TrafficEntity.builder()
                 .distance(distance)
                 .traffic(traffic)
                 .population(population)
                 .carbonEmission(carbonEmission)
-                .uid(uid)
+                .userId(userId)
                 .build();
-        boolean save = trafficService.save(trafficEntity);
+        boolean save = trafficService.saveOrUpdateByUserId(trafficEntity);
         if (!save) {
             return ResponseEntity.internalServerError().build();
         }
@@ -68,26 +69,26 @@ public class CarbonController {
     @RequestMapping("/carbon/accommodation")
     public ResponseEntity<AccommodationResp> getAccommodation(@RequestParam("priceLevel") Integer priceLevel,
         @RequestParam("population") Integer population,
-        @RequestParam("uid") String uid) {
+        @RequestParam("userId") String userId) {
         AccommodationParam accommodation = AccommodationParam.builder()
                 .priceLevel(priceLevel)
                 .population(population)
-                .uid(uid)
+                .userId(userId)
                 .build();
         double carbonEmission = CalculateUtil.getEmission(accommodation);
         AccommodationResp accommodationResp = AccommodationResp.builder()
                 .priceLevel(priceLevel)
                 .population(population)
                 .carbonEmission(carbonEmission)
-                .uid(uid)
+                .userId(userId)
                 .build();
         AccommodationEntity accommodationEntity = AccommodationEntity.builder()
                 .priceLevel(priceLevel)
                 .population(population)
                 .carbonEmission(carbonEmission)
-                .uid(uid)
+                .userId(userId)
                 .build();
-        boolean save = accommodationService.save(accommodationEntity);
+        boolean save = accommodationService.saveOrUpdateByUserId(accommodationEntity);
         if (!save) {
             return ResponseEntity.internalServerError().build();
         }
@@ -95,28 +96,28 @@ public class CarbonController {
     }
 
     @RequestMapping("/carbon/activity")
-    public ResponseEntity<ActivityResp> traffic(@RequestParam("activityLevel") Integer activityLevel,
+    public ResponseEntity<ActivityResp> getActivity(@RequestParam("activityLevel") Integer activityLevel,
         @RequestParam("population") Integer population,
-        @RequestParam("uid") String uid) {
+        @RequestParam("userId") String userId) {
         ActivityParam activityParam = ActivityParam.builder()
                 .activityLevel(activityLevel)
                 .population(population)
-                .uid(uid)
+                .userId(userId)
                 .build();
         double carbonEmission = CalculateUtil.getEmission(activityParam);
         ActivityResp activityResp = ActivityResp.builder()
                 .activityLevel(activityLevel)
                 .population(population)
                 .carbonEmission(carbonEmission)
-                .uid(uid)
+                .userId(userId)
                 .build();
         ActivityEntity activityEntity = ActivityEntity.builder()
                 .activityLevel(activityLevel)
                 .population(population)
                 .carbonEmission(carbonEmission)
-                .uid(uid)
+                .userId(userId)
                 .build();
-        boolean save = activityService.save(activityEntity);
+        boolean save = activityService.saveOrUpdateByUserId(activityEntity);
         if (!save) {
             return ResponseEntity.internalServerError().build();
         }
@@ -124,10 +125,10 @@ public class CarbonController {
     }
 
     @RequestMapping("/carbon/record")
-    public ResponseEntity<CarbonRecordResp> traffic(@RequestParam("uid") String uid) {
-        TrafficEntity trafficEntity = trafficService.find(uid);
-        AccommodationEntity accommodationEntity = accommodationService.find(uid);
-        ActivityEntity activityEntity = activityService.find(uid);
+    public ResponseEntity<CarbonRecordResp> getCarbonRecord(@RequestParam("userId") String userId) {
+        TrafficEntity trafficEntity = trafficService.find(userId);
+        AccommodationEntity accommodationEntity = accommodationService.find(userId);
+        ActivityEntity activityEntity = activityService.find(userId);
         CarbonRecordResp recordResp = CarbonRecordResp.builder().traffic(trafficEntity)
                 .accommodation(accommodationEntity)
                 .activity(activityEntity)

@@ -11,5 +11,5 @@ public class AccommodationParam {
 
     private Integer population;
 
-    private String uid;
+    private String userId;
 }

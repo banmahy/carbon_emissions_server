@@ -15,6 +15,6 @@ public class TrafficResp {
 
     private double carbonEmission;
 
-    private String uid;
+    private String userId;
 
 }

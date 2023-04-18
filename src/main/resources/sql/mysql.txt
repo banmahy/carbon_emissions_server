@@ -1,0 +1,46 @@
+CREATE TABLE IF NOT EXISTS `tbl_sys_user` (
+  `id` varchar(64) NOT NULL COMMENT 'id',
+  `name` varchar(100) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '姓名',
+  `username` varchar(100) DEFAULT NULL COMMENT '用户名',
+  `sex` char(1) DEFAULT NULL COMMENT '性别',
+  `avatar_url` varchar(1000) DEFAULT NULL COMMENT '头像URL',
+  `email` varchar(100) DEFAULT NULL COMMENT '邮箱',
+  `phone` varchar(100) DEFAULT NULL COMMENT '电话',
+  `remarks` varchar(255) DEFAULT NULL COMMENT '备注',
+  `open_id` varchar(100) DEFAULT NULL COMMENT '微信用户唯一标识',
+  `union_id` varchar(100) DEFAULT NULL COMMENT '微信用户唯一标识符',
+  `nickname` varchar(100) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '微信用户昵称',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  `menu_list` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户表';
+
+
+CREATE TABLE IF NOT EXISTS `tbl_carbon_traffic` (
+`id`  varchar(64) NOT NULL COMMENT 'id' ,
+`user_id`  varchar(64) NOT NULL COMMENT '用户id' ,
+`traffic`  int(24) NOT NULL COMMENT '交通工具' ,
+`population`  int(24) NOT NULL COMMENT '人数' ,
+`distance`  double(24,0) NOT NULL COMMENT '距离' ,
+`carbon_emission`  double(24,0) NOT NULL COMMENT '碳排量' ,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='交通工具碳排记录表';
+
+CREATE TABLE IF NOT EXISTS `tbl_carbon_accommodation` (
+`id`  varchar(64) NOT NULL COMMENT 'id' ,
+`user_id`  varchar(64) NOT NULL COMMENT '用户id' ,
+`population`  int(24) NOT NULL COMMENT '人数' ,
+`price_level`  int(4) NOT NULL COMMENT '价格水平' ,
+`carbon_emission`  double(24,0) NOT NULL COMMENT '碳排量' ,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='酒店价格碳排记录表';
+
+CREATE TABLE IF NOT EXISTS `tbl_carbon_activity` (
+`id`  varchar(64) NOT NULL COMMENT 'id' ,
+`user_id`  varchar(64) NOT NULL COMMENT '用户id' ,
+`population`  int(24) NOT NULL COMMENT '人数' ,
+`activity_level`  int(4) NOT NULL COMMENT '活动等级' ,
+`carbon_emission`  double(24,0) NOT NULL COMMENT '碳排量' ,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='活动等级碳排记录表';

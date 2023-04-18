@@ -13,5 +13,5 @@ public class TrafficParam {
 
     private Integer traffic;
 
-    private String uid;
+    private String userId;
 }
