@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 @RestController
+@RequestMapping("/api")
 public class CarbonController {
 
     @Resource
@@ -32,7 +33,7 @@ public class CarbonController {
     private ActivityService activityService;
 
     @RequestMapping("/carbon/traffic")
-    public ResponseEntity<TrafficResp> getTraffic(@RequestParam("distance") double distance,
+    public ResponseEntity<TrafficResp> getTraffic(@RequestParam("distance") Double distance,
         @RequestParam("traffic") Integer traffic,
         @RequestParam("population") Integer population,
         @RequestParam("uid") String uid) {

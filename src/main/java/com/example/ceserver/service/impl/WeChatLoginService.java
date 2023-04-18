@@ -6,10 +6,11 @@ import com.example.ceserver.service.SysUserService;
 import com.example.ceserver.util.JWTUtils;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import javax.annotation.Resource;
 
 /**
  * @ClassName WeChatLoginService
@@ -27,7 +28,7 @@ public class WeChatLoginService {
 
     private final static String CODE2SESSION = "https://api.weixin.qq.com/sns/jscode2session?";
 
-    @Autowired
+    @Resource
     private SysUserService sysUserService;
 
 

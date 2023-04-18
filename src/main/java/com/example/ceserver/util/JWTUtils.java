@@ -1,5 +1,6 @@
 package com.example.ceserver.util;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.CompressionCodecs;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -27,6 +28,18 @@ public class JWTUtils {
                 .signWith(SignatureAlgorithm.HS512,tokenSignKey)
                 .compressWith(CompressionCodecs.GZIP)
                 .compact();
+    }
+
+    public static void verifyToken (String token) {
+        try {
+            Claims body = Jwts.parser()
+                    .setSigningKey(tokenSignKey)
+                    .parseClaimsJws(token)
+                    .getBody();
+            System.out.println(body);
+        } catch (Exception e) {
+            throw new RuntimeException("Invalid Token:" + e);
+        }
     }
 
 }

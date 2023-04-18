@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date
  **/
 @RestController
-@RequestMapping("api")
 public class WeChatLoginController {
 
     @Autowired
