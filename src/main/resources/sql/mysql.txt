@@ -1,4 +1,110 @@
-CREATE TABLE IF NOT EXISTS `tbl_sys_user` (
+-- MySQL dump 10.13  Distrib 5.7.32, for Win64 (x86_64)
+--
+-- Host: localhost    Database: carbon-emission-mysql
+-- ------------------------------------------------------
+-- Server version	5.7.32
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `tbl_carbon_accommodation`
+--
+
+DROP TABLE IF EXISTS `tbl_carbon_accommodation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_carbon_accommodation` (
+  `id` varchar(64) NOT NULL COMMENT 'id',
+  `uid` varchar(64) DEFAULT NULL COMMENT '记录id',
+  `user_id` varchar(64) NOT NULL COMMENT '用户id',
+  `population` int(24) NOT NULL COMMENT '人数',
+  `price_level` int(4) NOT NULL COMMENT '价格水平',
+  `carbon_emission` double NOT NULL COMMENT '碳排量',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='酒店价格碳排记录表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_carbon_accommodation`
+--
+
+LOCK TABLES `tbl_carbon_accommodation` WRITE;
+/*!40000 ALTER TABLE `tbl_carbon_accommodation` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_carbon_accommodation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_carbon_activity`
+--
+
+DROP TABLE IF EXISTS `tbl_carbon_activity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_carbon_activity` (
+  `id` varchar(64) NOT NULL COMMENT 'id',
+  `uid` varchar(64) DEFAULT NULL COMMENT '记录id',
+  `user_id` varchar(64) NOT NULL COMMENT '用户id',
+  `population` int(24) NOT NULL COMMENT '人数',
+  `activity_level` int(4) NOT NULL COMMENT '活动等级',
+  `carbon_emission` double NOT NULL COMMENT '碳排量',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='活动等级碳排记录表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_carbon_activity`
+--
+
+LOCK TABLES `tbl_carbon_activity` WRITE;
+/*!40000 ALTER TABLE `tbl_carbon_activity` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_carbon_activity` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_carbon_traffic`
+--
+
+DROP TABLE IF EXISTS `tbl_carbon_traffic`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_carbon_traffic` (
+  `id` varchar(64) NOT NULL COMMENT 'id',
+  `uid` varchar(64) DEFAULT NULL COMMENT '记录id',
+  `user_id` varchar(64) DEFAULT NULL COMMENT '用户id',
+  `traffic` int(24) NOT NULL COMMENT '交通工具',
+  `population` int(24) NOT NULL COMMENT '人数',
+  `distance` double NOT NULL COMMENT '距离',
+  `carbon_emission` double NOT NULL COMMENT '碳排量',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='交通工具碳排记录表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_carbon_traffic`
+--
+
+LOCK TABLES `tbl_carbon_traffic` WRITE;
+/*!40000 ALTER TABLE `tbl_carbon_traffic` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_carbon_traffic` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_sys_user`
+--
+
+DROP TABLE IF EXISTS `tbl_sys_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_sys_user` (
   `id` varchar(64) NOT NULL COMMENT 'id',
   `name` varchar(100) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '姓名',
   `username` varchar(100) DEFAULT NULL COMMENT '用户名',
@@ -17,30 +123,3 @@ CREATE TABLE IF NOT EXISTS `tbl_sys_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户表';
 
 
-CREATE TABLE IF NOT EXISTS `tbl_carbon_traffic` (
-`id`  varchar(64) NOT NULL COMMENT 'id' ,
-`user_id`  varchar(64) NOT NULL COMMENT '用户id' ,
-`traffic`  int(24) NOT NULL COMMENT '交通工具' ,
-`population`  int(24) NOT NULL COMMENT '人数' ,
-`distance`  double(24,0) NOT NULL COMMENT '距离' ,
-`carbon_emission`  double(24,0) NOT NULL COMMENT '碳排量' ,
-PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='交通工具碳排记录表';
-
-CREATE TABLE IF NOT EXISTS `tbl_carbon_accommodation` (
-`id`  varchar(64) NOT NULL COMMENT 'id' ,
-`user_id`  varchar(64) NOT NULL COMMENT '用户id' ,
-`population`  int(24) NOT NULL COMMENT '人数' ,
-`price_level`  int(4) NOT NULL COMMENT '价格水平' ,
-`carbon_emission`  double(24,0) NOT NULL COMMENT '碳排量' ,
-PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='酒店价格碳排记录表';
-
-CREATE TABLE IF NOT EXISTS `tbl_carbon_activity` (
-`id`  varchar(64) NOT NULL COMMENT 'id' ,
-`user_id`  varchar(64) NOT NULL COMMENT '用户id' ,
-`population`  int(24) NOT NULL COMMENT '人数' ,
-`activity_level`  int(4) NOT NULL COMMENT '活动等级' ,
-`carbon_emission`  double(24,0) NOT NULL COMMENT '碳排量' ,
-PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='活动等级碳排记录表';
