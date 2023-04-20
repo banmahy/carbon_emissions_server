@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @ClassName WeChatLoginService
@@ -32,8 +34,9 @@ public class WeChatLoginService {
     private SysUserService sysUserService;
 
 
-    public String login(String code,String userInfo) {
+    public Map<String,String> login(String code, String userInfo) {
         RestTemplate restTemplate = new RestTemplate();
+        Map<String, String> res = new HashMap<>();
         String url = CODE2SESSION + "appid=" + appId + "&secret=" + appSecret + "&js_code=" + code +"&grant_type=authorization_code";
         String result = restTemplate.getForObject(url, String.class);
         String openid = JSONObject.fromObject(result).getString("openid");
@@ -55,7 +58,9 @@ public class WeChatLoginService {
                     .build();
             sysUserService.save(user);
         }
-
-        return JWTUtils.generateToken(user.getId(),user.getNickname());
+        res.put("token", JWTUtils.generateToken(user.getId(), user.getNickname()));
+        res.put("userId", user.getId());
+        res.put("menuList", user.getMenuList());
+        return res;
     }
 }

@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 /**
  * @ClassName WeChatLoginController
  * @Author
@@ -18,7 +20,7 @@ public class WeChatLoginController {
     private WeChatLoginService weChatLoginService;
 
     @RequestMapping("/login")
-    public ResponseEntity<String> weChatLogin(String code, String userInfo) {
+    public ResponseEntity<Map<String,String>> weChatLogin(String code, String userInfo) {
         return ResponseEntity.ok(weChatLoginService.login(code, userInfo));
     }
 
