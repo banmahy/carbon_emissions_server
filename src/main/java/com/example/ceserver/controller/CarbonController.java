@@ -1,6 +1,5 @@
 package com.example.ceserver.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.ceserver.model.entity.AccommodationEntity;
 import com.example.ceserver.model.entity.ActivityEntity;
 import com.example.ceserver.model.entity.TrafficEntity;
@@ -19,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Random;
 
 @RestController
 @RequestMapping("/api")
@@ -132,6 +132,8 @@ public class CarbonController {
         CarbonRecordResp recordResp = CarbonRecordResp.builder().traffic(trafficEntity)
                 .accommodation(accommodationEntity)
                 .activity(activityEntity)
+                .suggestion(CarbonRecordResp.ALL_SUGGESTIONS
+                        .get(new Random().nextInt(CarbonRecordResp.ALL_SUGGESTIONS.size())))
                 .build();
         return ResponseEntity.ok(recordResp);
     }
